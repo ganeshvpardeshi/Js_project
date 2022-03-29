@@ -4,8 +4,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 
 
-const encrypt= {
-    generateHash : async function(password)
+const encrypt = {
+    generateHashPass : async function(password)
     {
         const salt = await bcrypt.genSalt();
         const hashPassword = await bcrypt.hash(password, salt);

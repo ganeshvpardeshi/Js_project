@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("./userSchema")
-const encrypt = require("./validation")
+const encrypt = require("./passwordHash")
 const bcrypt = require('bcrypt');
 
 router.get('/',getDataUser);
@@ -10,38 +10,6 @@ router.post('/signup',createUser);
 router.delete('/:id',deleteUser);
 router.put('/:id',updateUser);
 
-
-async function loginUser(req,res){
-
-        try{
-
-            const email = req.body.email;
-            const password = req.body.password;
-
-            const userDetails = await User.findOne({email:email});
-            console.log(userDetails)
-            if(userDetails){
-
-                const isValid = await encrypt.comparePassword(password,userDetails.password);
-                if(isValid)
-                {
-                    res.render('index', { title: 'Express' });
-                    console.log("",userName);
-                }
-                else{
-                    res.send({Message:"The Password Doesn't Match, Try Again."});
-                }
-            }
-            else{
-                console.log("hii error in if-else");
-                res.send({Message:"Username and Password Not found. Please Enter Valid Credentials."});
-            }
-        }
-        catch(err)
-        {
-            console.log("Error in Login Page");
-        }
-}
 async function getDataUser(req,res)
 {
     try{
@@ -87,7 +55,7 @@ async function createUser(req,res)
         if(!findUser)
         {
             console.log("Data Successfully Added.");
-            user.password = await encrypt.generateHash(user.password);
+            user.password = await encrypt.generateHashPass(user.password);
             console.log("Data sdsds Added.",user.password);
 
             await user.save();
