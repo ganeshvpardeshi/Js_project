@@ -18,5 +18,9 @@
     "nodemailer": "^6.7.3",
     "nodemon": "^2.0.15",
     "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/nodemailer": "^6.4.4"
   }
 }

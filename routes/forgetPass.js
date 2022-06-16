@@ -1,51 +1,84 @@
-// const express = require("express");
-// const router = express.Router();
-// var nodemailer = require('nodemailer');
+// const { body, validationResult ,checkSchema} = require('express-validator');
+// const router = require('./login');
 
-//     var transporter = nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//           user: 'captainkafollower01@gmail.com',
-//           pass: '@Password?1'
+// // router.post(
+// //   '/createUser',    
+// //   // username must be an email
+// //   body('firstName').isString(),
+// //   body('lastName').isString(),
+// //   body('userName').isString(),
+// //   body('email').isEmail(),
+// //   // password must be at least 5 chars long
+// //   body('password').isLength({ min: 5 }),
+// //   (req, res,) => {
+// //     // Finds the validation errors in this request and wraps them in an object with handy functions
+// //     const errors = validationResult(req);
+// //     if (!errors.isEmpty()) {
+// //       return res.status(400).json({ errors: errors.array() });
+// //     }
+
+// //     // next();
+// //   },
+// // );
+
+// const validation = {
+//  CreateUser: function(){   
+//       // username must be an email
+//       body('firstName').isString(),
+//       body('lastName').isString(),
+//       body('userName').isString(),
+//       body('email').isEmail(),
+//       // password must be at least 5 chars long
+//       body('password').isLength({ min: 5 }),
+//       (req, res,) => {
+//         // Finds the validation errors in this request and wraps them in an object with handy functions
+//         const errors = validationResult(req);
+//         if (!errors.isEmpty()) {
+//           return res.status(400).json({ errors: errors.array() });
 //         }
-//       });
-      
-//       var mailOptions = {
-//         from: 'captainkafollower01@gmail.com',
-//         to: 'pardeshivg002@gmail.com',
-//         subject: 'Sending Email using Node.js',
-//         text: 'That was easy!'
-//       };
-      
-//       transporter.sendMail(mailOptions, function(error, info){
-//         if (error) {
-//           console.log(error);
-//         } else {
-//           console.log('Email sent: ' + info.response);
-//         }
-//       });
-//     // }
-//         //     var transporter = nodemailer.createTransport({
-//         //     service: 'gmail',
-//         //     auth: {
-//         //     user: 'captainkafollower01@gmail.com',
-//         //     pass: '@Password?1'
-//         //     }
-        
-//         // var mailOptions = {
-//         //     from: 'captainkafollower01@gmail.com',
-//         //     to: 'pardeshivg002@gmail.com',
-//         //     subject: 'Sending Email using Node.js',
-//         //     text: 'That was easy!'
-//         // };
-        
-//         // transporter.sendMail(mailOptions, function(error, info){
-//         //     if (error) {
-//         //     console.log(error);
-//         //     } else {
-//         //     console.log('Email sent: ' + info.response);
-//         //     }
-//         // });
-//         // }
+
+//         // next();
+//     }
+//   }
+// }
+
+// // const userRules ={
+
+// //     createUser:checkSchema({
+
+// //         firstName:{
+// //             in:['body'],
+// //             trime:true,
+// //             isString:true
+// //         },
+// //         lastName:{
+// //             in:['body'],
+// //             trime:true,
+// //             isString:true
+// //         },
+// //         userName: {
+// //             in :['body'],
+// //             trim : true,
+// //             isString: true,
+// //             isLength: {
+// //                 options : {min : 6},
+// //                 errorMessage : 'Username must be at least 6 character.'
+// //             },
+// //             errorMessage : "Please enter valid username."
+// //         },
+// //         email:{
+// //             in:['body'],
+// //             trim:true,
+// //             isEmail:true,
+// //             errorMessage:"Please enter valid Email."
+// //         },
+// //         password:{
+// //             in:['body'],
+// //             trim:true,
+// //             errorMessage:"Please enter valid Password."
+// //         },
+
+// //     })
 // // }
-// // module.exports = forget;
+
+// module.exports = router;

@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("./userSchema")
 const encrypt = require("./passwordHash")
 const bcrypt = require('bcrypt');
+const userRules = require("./forgetPass");
 
 router.get('/',getDataUser);
 router.get('/:id',getSingleUser);
@@ -114,7 +115,7 @@ async function deleteUser(req,res)
 
             const userReq = req.params.id;
 
-            const user = await User.findOneAndRemove(userReq);
+            const user = await User.findByIdAndRemove(userReq);
             console.log("",user);
             res.send({Message:"The Data is Deleted Successfully.",Data:user});
 
